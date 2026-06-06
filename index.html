@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>신착도서 분석 대시보드 (실시간 자동화)</title>
+<title>전국 도서관 통합 도서 분석 대시보드</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -62,66 +62,66 @@
 <body>
 <header>
   <div>
-    <div class="logo">라이브러리 인텔리전스 시스템</div>
-    <h1>신착도서 분석 대시보드</h1>
+    <div class="logo">국가 도서관 데이터 시스템 통합망</div>
+    <h1>전국 도서관 통합 분석 대시보드</h1>
   </div>
-  <span id="meta">데이터를 가져오는 중...</span>
+  <span id="meta">통합 데이터를 가져오는 중...</span>
 </header>
 
 <div id="loading-zone">
   <div class="spinner"></div>
-  <div>LOADING NEW ARRIVAL BOOKS...</div>
+  <div>LOADING INTEGRATED NATIONAL DATA...</div>
 </div>
 
 <div id="dashboard">
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-label">신착 도서수</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">총 입고 권수</div></div>
-    <div class="kpi"><div class="kpi-label">출판사 수</div><div class="kpi-value" id="kpi-pubs">—</div><div class="kpi-sub">개 출판사 참여</div></div>
-    <div class="kpi"><div class="kpi-label">총 대출수</div><div class="kpi-value" id="kpi-libs">—</div><div class="kpi-sub">신착도서 누적 대출</div></div>
-    <div class="kpi"><div class="kpi-label">최대 소장권수</div><div class="kpi-value" id="kpi-top1libs">—</div><div class="kpi-sub">동일 도서 최대 소장</div></div>
+    <div class="kpi"><div class="kpi-label">분석 대상 도서</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">상위 노출권수</div></div>
+    <div class="kpi"><div class="kpi-label">등재 출판사</div><div class="kpi-value" id="kpi-pubs">—</div><div class="kpi-sub">개 출판사 유입</div></div>
+    <div class="kpi"><div class="kpi-label">총 대출 규모</div><div class="kpi-value" id="kpi-libs">—</div><div class="kpi-sub">전국 합산 수치</div></div>
+    <div class="kpi"><div class="kpi-label">1위 도서 유통수</div><div class="kpi-value" id="kpi-top1libs">—</div><div class="kpi-sub">전국 최고치</div></div>
     <div class="kpi"><div class="kpi-label">시리즈 비율</div><div class="kpi-value" id="kpi-series">—</div><div class="kpi-sub">% 시리즈물</div></div>
     <div class="kpi"><div class="kpi-label">공동 저작 비율</div><div class="kpi-value" id="kpi-collab">—</div><div class="kpi-sub">% 공동 저작</div></div>
   </div>
   
   <div class="grid-2">
     <div class="card">
-      <div class="card-title">출판사별 신착 도서 수 (상위 12)</div>
+      <div class="card-title">출판사별 점유 도서 수 (상위 12)</div>
       <div class="chart-wrap" style="height:240px"><canvas id="chartPub"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title">출판사별 평균 소장 권수 (2권 이상 출판사)</div>
+      <div class="card-title">출판사별 평균 도서 유통수</div>
       <div class="chart-wrap" style="height:240px"><canvas id="chartAvg"></canvas></div>
     </div>
   </div>
   
   <div class="grid-3">
     <div class="card">
-      <div class="card-title">신착 도서 순서별 권수 및 대출 추이 (10권 단위)</div>
+      <div class="card-title">순위 구간별 데이터 추이 (10위 단위 평균)</div>
       <div class="chart-wrap" style="height:200px"><canvas id="chartTrend"></canvas></div>
     </div>
     <div class="card">
-      <div class="card-title">소장 권수 분포 비율</div>
+      <div class="card-title">데이터 분포 비율</div>
       <div class="chart-wrap" style="height:200px"><canvas id="chartDist"></canvas></div>
     </div>
   </div>
   
   <div class="grid-3">
     <div class="card">
-      <div class="card-title">최신 신착도서 리스트 (상위 20)</div>
+      <div class="card-title">전국 통합 도서 리스트 (상위 20)</div>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th style="width:36px">번호</th><th>서명</th><th>출판사</th><th style="text-align:right">소장권수(대출)</th></tr></thead>
+          <thead><tr><th style="width:36px">순위</th><th>서명</th><th>출판사</th><th style="text-align:right">도서권수 (전국 도서관수 추정)</th></tr></thead>
           <tbody id="topTable"></tbody>
         </table>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px;">
       <div class="card">
-        <div class="card-title">신착 분석 인사이트</div>
+        <div class="card-title">전국 데이터 인사이트</div>
         <ul class="insight-list" id="insightList"></ul>
       </div>
       <div class="card">
-        <div class="card-title">출판사 공급 지수 (도서수 × 소장권수)</div>
+        <div class="card-title">출판사 전국 영향력 지수</div>
         <div id="pubScore"></div>
       </div>
     </div>
@@ -138,8 +138,7 @@ window.addEventListener('DOMContentLoaded', () => {
 async function autoLoadData() {
   try {
     const response = await fetch('data.json');
-    if (!response.ok) throw new Error('data.json 파일을 불러오지 못했습니다.');
-    
+    if (!response.ok) throw new Error('data.json 통합 데이터 파일을 찾을 수 없습니다.');
     const result = await response.json();
     
     document.getElementById('loading-zone').style.display = 'none';
@@ -147,10 +146,9 @@ async function autoLoadData() {
     document.getElementById('meta').textContent = result.period;
     
     renderDashboard(result.data);
-    
   } catch (error) {
     document.getElementById('loading-zone').innerHTML = 
-      `<div style="color:#ff7f5c;font-size:14px;">❌ 데이터를 불러오지 못했습니다.<br>오류 내용: ${error.message}<br><br>💡 Actions 탭에서 배포 봇을 다시 실행(Run workflow)하여 신착도서 data.json이 정상 생성되었는지 확인하세요.</div>`;
+      `<div style="color:#ff7f5c;font-size:14px;">❌ 통합 데이터를 불러오지 못했습니다.<br>오류내용: ${error.message}</div>`;
   }
 }
 
@@ -162,18 +160,17 @@ function renderDashboard(data) {
     pubs[d.pub].count++; pubs[d.pub].total += d.copies;
   });
   const pubList = Object.entries(pubs)
-    .map(([name, v]) => ({ name, count: v.count, avg: Math.round(v.total / v.count * 10) / 10 }))
+    .map(([name, v]) => ({ name, count: v.count, avg: Math.round(v.total / v.count) }))
     .sort((a, b) => b.count - a.count);
 
-  const totalLoans = data.reduce((s, d) => s + d.libs, 0);
-  const maxCopies = Math.max(...data.map(d => d.copies));
+  const totalVolume = data.reduce((s, d) => s + d.copies, 0);
   const seriesPct = Math.round(data.filter(d => /\d+/.test(d.title)).length / n * 100);
   const collabPct = Math.round(data.filter(d => d.author.includes(',')).length / n * 100);
 
   document.getElementById('kpi-total').textContent = n;
   document.getElementById('kpi-pubs').textContent = Object.keys(pubs).length;
-  document.getElementById('kpi-libs').textContent = totalLoans;
-  document.getElementById('kpi-top1libs').textContent = maxCopies;
+  document.getElementById('kpi-libs').textContent = totalVolume.toLocaleString();
+  document.getElementById('kpi-top1libs').textContent = data[0]?.copies.toLocaleString() || '—';
   document.getElementById('kpi-series').textContent = seriesPct;
   document.getElementById('kpi-collab').textContent = collabPct;
 
@@ -205,9 +202,9 @@ function renderDashboard(data) {
   for (let i = 0; i < data.length; i += 10) {
     const chunk = data.slice(i, i + 10);
     groups.push({
-      label: (i+1) + '~' + (i + chunk.length) + '번',
-      copies: Math.round(chunk.reduce((s, d) => s + d.copies, 0) / chunk.length * 10) / 10,
-      libs: Math.round(chunk.reduce((s, d) => s + d.libs, 0) / chunk.length * 10) / 10,
+      label: (i+1) + '~' + (i + chunk.length) + '위',
+      copies: Math.round(chunk.reduce((s, d) => s + d.copies, 0) / chunk.length),
+      libs: Math.round(chunk.reduce((s, d) => s + d.libs, 0) / chunk.length),
     });
   }
   charts.trend = new Chart(document.getElementById('chartTrend'), {
@@ -215,23 +212,21 @@ function renderDashboard(data) {
     data: {
       labels: groups.map(g => g.label),
       datasets: [
-        { label: '소장권수', data: groups.map(g => g.copies), borderColor: '#c8f060', backgroundColor: 'rgba(200,240,96,0.08)', tension: 0.4, pointRadius: 3, fill: true },
-        { label: '평균대출', data: groups.map(g => g.libs), borderColor: '#ff7f5c', backgroundColor: 'rgba(255,127,92,0.06)', tension: 0.4, pointRadius: 3, fill: true, borderDash: [4,3] }
+        { label: '도서권수', data: groups.map(g => g.copies), borderColor: '#c8f060', backgroundColor: 'rgba(200,240,96,0.08)', tension: 0.4, pointRadius: 3, fill: true },
+        { label: '도서관수', data: groups.map(g => g.libs), borderColor: '#ff7f5c', backgroundColor: 'rgba(255,127,92,0.06)', tension: 0.4, pointRadius: 3, fill: true, borderDash: [4,3] }
       ]
     },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: tc, font: { size: 10 }, maxRotation: 38 }, grid: { color: gc } }, y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } } } }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } }, y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } } } }
   });
 
-  const buckets = [0, 0, 0]; // 1권 소장, 2권 소장, 3권 이상 소장
-  data.forEach(d => {
-    if(d.copies === 1) buckets[0]++;
-    else if(d.copies === 2) buckets[1]++;
-    else buckets[2]++;
-  });
+  const maxC = Math.max(...data.map(d => d.copies));
+  const step = Math.ceil(maxC / 3);
+  const buckets = [0,0,0];
+  data.forEach(d => { const i = Math.min(2, Math.floor(d.copies / step)); buckets[i]++; });
   charts.dist = new Chart(document.getElementById('chartDist'), {
     type: 'doughnut',
     data: {
-      labels: ['1권 소장', '2권 소장', '3권 이상'],
+      labels: ['일반 유통군', '집중 유통군', '최상위 핵심군'],
       datasets: [{ data: buckets, backgroundColor: ['#c8f060','#6b8cff','#ff7f5c'], borderWidth: 0 }]
     },
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: tc, font: { size: 11 }, boxWidth: 10 } } }, cutout: '60%' }
@@ -240,31 +235,30 @@ function renderDashboard(data) {
   const tbody = document.getElementById('topTable');
   tbody.innerHTML = '';
   data.slice(0, 20).forEach(d => {
-    const maxVal = Math.max(...data.map(item => item.copies), 1);
-    const pct = Math.round(d.copies / maxVal * 100);
+    const pct = Math.round(d.copies / data[0].copies * 100);
     const cls = d.rank <= 3 ? 'rank-' + d.rank : '';
     const tr = document.createElement('tr');
     tr.innerHTML = '<td><span class="rank-badge ' + cls + '">' + d.rank + '</span></td>' +
       '<td class="title-cell" title="' + d.title + '">' + d.title + '</td>' +
       '<td><span class="pub-tag">' + d.pub + '</span></td>' +
-      '<td><div class="bar-inline"><span class="mono" style="font-size:12px;min-width:45px;text-align:right">' + d.copies + '권(' + d.libs + ')</span><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div></div></td>';
+      '<td><div class="bar-inline"><span class="mono" style="font-size:12px;min-width:70px;text-align:right">' + d.copies.toLocaleString() + '권 (' + d.libs.toLocaleString() + '곳)</span><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div></div></td>';
     tbody.appendChild(tr);
   });
 
   const top1 = data[0], topPub = pubList[0];
   const highAvgPub = multiPubs[0] || {name: '없음', avg: 0};
   const insights = [
-    '최근 입고 도서 중 <span class="highlight">' + top1.title + '</span>이 가장 먼저 배치됨',
-    '<span class="highlight">' + topPub.name + '</span> 출판사가 총 ' + topPub.count + '권으로 가장 많은 도서를 공급함',
-    '출판사별 평균 소장 수 최고: <span class="highlight">' + highAvgPub.name + '</span> (평균 ' + highAvgPub.avg + '권)',
-    '전체 신착도서의 누적 대출 건수는 총 <span class="highlight">' + totalLoans + '회</span> 기록 중',
-    '신착도서 중 시리즈물 비율은 <span class="highlight">' + seriesPct + '%</span>, 공동저작은 <span class="highlight">' + collabPct + '%</span>',
+    '전국 통합 분석 결과 <span class="highlight">' + top1.title + '</span>이 최상위 점유율을 차지함',
+    '<span class="highlight">' + topPub.name + '</span> 출판사가 상위권에 가장 많은 종수의 도서를 진입시킴',
+    '종당 평균 공급 규모가 가장 큰 출판사는 <span class="highlight">' + highAvgPub.name + '</span>',
+    '시리즈 연작 형태의 도서 비중은 전체의 <span class="highlight">' + seriesPct + '%</span>',
+    '2인 이상 공동 저작물 비율은 <span class="highlight">' + collabPct + '%</span>로 집계됨',
   ];
   document.getElementById('insightList').innerHTML = insights.map(t =>
     '<li><div class="insight-dot"></div><div>' + t + '</div></li>').join('');
 
   const scoreList = pubList.filter(p => p.count >= 2)
-    .map(p => ({ name: p.name, score: Math.round(p.count * p.avg) }))
+    .map(p => ({ name: p.name, score: p.count * p.avg }))
     .sort((a, b) => b.score - a.score).slice(0, 6);
   if(scoreList.length > 0) {
     const maxScore = scoreList[0].score;
