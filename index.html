@@ -34,7 +34,7 @@
   .grid-3 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px; }
   .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; }
   .card-title { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
-  .chart-wrap { position: relative; width: 100%; height: 100%; }
+  .chart-wrap { position: relative; width: 100%; height: 240px; }
   .tbl-wrap { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   th { text-align: left; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
@@ -77,7 +77,7 @@
   <div class="kpi-row">
     <div class="kpi"><div class="kpi-label">분석 대상 도서</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">상위 노출권수</div></div>
     <div class="kpi"><div class="kpi-label">등재 출판사</div><div class="kpi-value" id="kpi-pubs">—</div><div class="kpi-sub">개 출판사 유입</div></div>
-    <div class="kpi"><div class="kpi-label">총 대출 규모</div><div class="kpi-value" id="kpi-libs">—</div><div class="kpi-sub">전국 합산 수치</div></div>
+    <div class="kpi"><div class="kpi-label">총 도서권수 규모</div><div class="kpi-value" id="kpi-libs">—</div><div class="kpi-sub">전국 합산 수치</div></div>
     <div class="kpi"><div class="kpi-label">1위 도서 유통수</div><div class="kpi-value" id="kpi-top1libs">—</div><div class="kpi-sub">전국 최고치</div></div>
     <div class="kpi"><div class="kpi-label">시리즈 비율</div><div class="kpi-value" id="kpi-series">—</div><div class="kpi-sub">% 시리즈물</div></div>
     <div class="kpi"><div class="kpi-label">공동 저작 비율</div><div class="kpi-value" id="kpi-collab">—</div><div class="kpi-sub">% 공동 저작</div></div>
@@ -86,11 +86,11 @@
   <div class="grid-2">
     <div class="card">
       <div class="card-title">출판사별 점유 도서 수 (상위 12)</div>
-      <div class="chart-wrap" style="height:240px"><canvas id="chartPub"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartPub"></canvas></div>
     </div>
     <div class="card">
       <div class="card-title">출판사별 평균 도서 유통수</div>
-      <div class="chart-wrap" style="height:240px"><canvas id="chartAvg"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartAvg"></canvas></div>
     </div>
   </div>
   
@@ -110,7 +110,7 @@
       <div class="card-title">전국 통합 도서 리스트 (상위 20)</div>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th style="width:36px">순위</th><th>서명</th><th>출판사</th><th style="text-align:right">도서권수 (전국 도서관수 추정)</th></tr></thead>
+          <thead><tr><th style="width:36px">순위</th><th>서명</th><th>출판사</th><th style="text-align:right">도서권수 (전국 도서관수)</th></tr></thead>
           <tbody id="topTable"></tbody>
         </table>
       </div>
@@ -153,24 +153,28 @@ async function autoLoadData() {
 }
 
 function renderDashboard(data) {
+  if(!data || data.length === 0) return;
+  
   const n = data.length;
   const pubs = {};
   data.forEach(d => {
     if (!pubs[d.pub]) pubs[d.pub] = { count: 0, total: 0 };
-    pubs[d.pub].count++; pubs[d.pub].total += d.copies;
+    pubs[d.pub].count++; 
+    pubs[d.pub].total += Number(d.copies || 0);
   });
+  
   const pubList = Object.entries(pubs)
     .map(([name, v]) => ({ name, count: v.count, avg: Math.round(v.total / v.count) }))
     .sort((a, b) => b.count - a.count);
 
-  const totalVolume = data.reduce((s, d) => s + d.copies, 0);
+  const totalVolume = data.reduce((s, d) => s + Number(d.copies || 0), 0);
   const seriesPct = Math.round(data.filter(d => /\d+/.test(d.title)).length / n * 100);
   const collabPct = Math.round(data.filter(d => d.author.includes(',')).length / n * 100);
 
   document.getElementById('kpi-total').textContent = n;
   document.getElementById('kpi-pubs').textContent = Object.keys(pubs).length;
   document.getElementById('kpi-libs').textContent = totalVolume.toLocaleString();
-  document.getElementById('kpi-top1libs').textContent = data[0]?.copies.toLocaleString() || '—';
+  document.getElementById('kpi-top1libs').textContent = Number(data[0]?.copies || 0).toLocaleString();
   document.getElementById('kpi-series').textContent = seriesPct;
   document.getElementById('kpi-collab').textContent = collabPct;
 
@@ -179,7 +183,7 @@ function renderDashboard(data) {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false } },
     scales: {
-      x: { ticks: { color: tc, font: { size: 10 }, autoSkip: false, maxRotation: 38 }, grid: { color: gc } },
+      x: { ticks: { color: tc, font: { size: 10 }, autoSkip: true, maxRotation: 38 }, grid: { color: gc } },
       y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc }, beginAtZero }
     }
   });
@@ -191,7 +195,7 @@ function renderDashboard(data) {
     options: baseOpts(true)
   });
 
-  const multiPubs = pubList.filter(p => p.count >= 2).sort((a, b) => b.avg - a.avg).slice(0, 10);
+  const multiPubs = pubList.filter(p => p.count >= 1).sort((a, b) => b.avg - a.avg).slice(0, 10);
   charts.avg = new Chart(document.getElementById('chartAvg'), {
     type: 'bar',
     data: { labels: multiPubs.map(p => p.name), datasets: [{ data: multiPubs.map(p => p.avg), backgroundColor: '#6b8cff', borderRadius: 4 }] },
@@ -201,12 +205,14 @@ function renderDashboard(data) {
   const groups = [];
   for (let i = 0; i < data.length; i += 10) {
     const chunk = data.slice(i, i + 10);
+    if(chunk.length === 0) continue;
     groups.push({
       label: (i+1) + '~' + (i + chunk.length) + '위',
-      copies: Math.round(chunk.reduce((s, d) => s + d.copies, 0) / chunk.length),
-      libs: Math.round(chunk.reduce((s, d) => s + d.libs, 0) / chunk.length),
+      copies: Math.round(chunk.reduce((s, d) => s + Number(d.copies || 0), 0) / chunk.length),
+      libs: Math.round(chunk.reduce((s, d) => s + Number(d.libs || 0), 0) / chunk.length),
     });
   }
+  
   charts.trend = new Chart(document.getElementById('chartTrend'), {
     type: 'line',
     data: {
@@ -219,10 +225,15 @@ function renderDashboard(data) {
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } }, y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } } } }
   });
 
-  const maxC = Math.max(...data.map(d => d.copies));
+  const maxC = Math.max(...data.map(d => Number(d.copies || 0)), 1);
   const step = Math.ceil(maxC / 3);
   const buckets = [0,0,0];
-  data.forEach(d => { const i = Math.min(2, Math.floor(d.copies / step)); buckets[i]++; });
+  data.forEach(d => { 
+    const val = Number(d.copies || 0);
+    const i = Math.min(2, Math.floor(val / step)); 
+    buckets[i]++; 
+  });
+  
   charts.dist = new Chart(document.getElementById('chartDist'), {
     type: 'doughnut',
     data: {
@@ -234,14 +245,18 @@ function renderDashboard(data) {
 
   const tbody = document.getElementById('topTable');
   tbody.innerHTML = '';
+  const firstDocCopies = Number(data[0]?.copies || 1);
+  
   data.slice(0, 20).forEach(d => {
-    const pct = Math.round(d.copies / data[0].copies * 100);
+    const curCopies = Number(d.copies || 0);
+    const curLibs = Number(d.libs || 0);
+    const pct = Math.round(curCopies / firstDocCopies * 100);
     const cls = d.rank <= 3 ? 'rank-' + d.rank : '';
     const tr = document.createElement('tr');
     tr.innerHTML = '<td><span class="rank-badge ' + cls + '">' + d.rank + '</span></td>' +
       '<td class="title-cell" title="' + d.title + '">' + d.title + '</td>' +
       '<td><span class="pub-tag">' + d.pub + '</span></td>' +
-      '<td><div class="bar-inline"><span class="mono" style="font-size:12px;min-width:70px;text-align:right">' + d.copies.toLocaleString() + '권 (' + d.libs.toLocaleString() + '곳)</span><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div></div></td>';
+      '<td><div class="bar-inline"><span class="mono" style="font-size:12px;min-width:85px;text-align:right">' + curCopies.toLocaleString() + '권 (' + curLibs.toLocaleString() + '곳)</span><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div></div></td>';
     tbody.appendChild(tr);
   });
 
@@ -257,11 +272,12 @@ function renderDashboard(data) {
   document.getElementById('insightList').innerHTML = insights.map(t =>
     '<li><div class="insight-dot"></div><div>' + t + '</div></li>').join('');
 
-  const scoreList = pubList.filter(p => p.count >= 2)
+  const scoreList = pubList.filter(p => p.count >= 1)
     .map(p => ({ name: p.name, score: p.count * p.avg }))
     .sort((a, b) => b.score - a.score).slice(0, 6);
+    
   if(scoreList.length > 0) {
-    const maxScore = scoreList[0].score;
+    const maxScore = scoreList[0].score || 1;
     document.getElementById('pubScore').innerHTML = scoreList.map(p =>
       '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>' + p.name + '</span><span class="mono" style="color:var(--muted)">' + p.score.toLocaleString() + '</span></div><div class="bar-bg" style="height:8px"><div class="bar-fill" style="width:' + Math.round(p.score/maxScore*100) + '%;background:var(--accent2)"></div></div></div>'
     ).join('');
