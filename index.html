@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신착도서 분석 대시보드 (실시간 자동화)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f11; --bg2: #161619; --bg3: #1e1e23;
+    --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+    --text: #f0eff5; --muted: #7a7a8c;
+    --accent: #c8f060; --accent2: #6b8cff; --accent3: #ff7f5c; --accent4: #59d4c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+  header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .logo { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  h1 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
+  #meta { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  
+  /* 로딩 표시기 스타일 */
+  #loading-zone { margin: 5rem auto; text-align: center; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .spinner { display: inline-block; width: 30px; height: 30px; border: 3px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s ease infinite; margin-bottom: 12px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #dashboard { display: none; padding: 2rem 2.5rem 4rem; }
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .kpi { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.25rem 1rem; }
+  .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .kpi-value { font-size: 28px; font-weight: 700; font-family: 'DM Mono', monospace; line-height: 1; }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+  .card-title { font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .chart-wrap { position: relative; width: 100%; }
+  .tbl-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; background: var(--bg3); color: var(--muted); }
+  .rank-1 { background: rgba(200,240,96,0.15); color: var(--accent); }
+  .rank-2 { background: rgba(107,140,255,0.15); color: var(--accent2); }
+  .rank-3 { background: rgba(255,127,92,0.15); color: var(--accent3); }
+  .title-cell { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pub-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; background: var(--bg3); color: var(--muted); font-size: 11px; }
+  .bar-inline { display: flex; align-items: center; gap: 8px; }
+  .bar-bg { flex: 1; height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+  .insight-list { list-style: none; }
+  .insight-list li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; font-size: 13px; line-height: 1.5; }
+  .insight-list li:last-child { border-bottom: none; }
+  .insight-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 7px; flex-shrink: 0; }
+  .highlight { color: var(--accent); font-weight: 500; }
+  .mono { font-family: 'DM Mono', monospace; }
+  @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } header { padding: 1.5rem; } #dashboard { padding: 1.5rem 1rem 3rem; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="logo">라이브러리 인텔리전스 시스템</div>
+    <h1>신착도서 분석 대시보드</h1>
+  </div>
+  <span id="meta">데이터를 가져오는 중...</span>
+</header>
+
+<div id="loading-zone">
+  <div class="spinner"></div>
+  <div>LOADING DATA...</div>
+</div>
+
+<div id="dashboard">
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-label">분석 도서</div><div class="kpi-value" id="kpi-total">—</div><div class="kpi-sub">상위 노출 수</div></div>
+    <div class="kpi"><div class="kpi-label">참여 출판사</div><div class="kpi-value" id="kpi-pubs">—</div><div class="kpi-sub">개 출판사</div></div>
+    <div class="kpi"><div class="kpi-label">평균 대출 건수</div><div class="kpi-value" id="kpi-libs">—</div><div class="kpi-sub">회 대출/권</div></div>
+    <div class="kpi"><div class="kpi-label">1위 대출 건수</div><div class="kpi-value" id="kpi-top1libs">—</div><div class="kpi-sub">회 대출</div></div>
+    <div class="kpi"><div class="kpi-label">시리즈 비율</div><div class="kpi-value" id="kpi-series">—</div><div class="kpi-sub">% 시리즈물</div></div>
+    <div class="kpi"><div class="kpi-label">공동 저작 비율</div><div class="kpi-value" id="kpi-collab">—</div><div class="kpi-sub">% 공동 저작</div></div>
+  </div>
+  
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">출판사별 등재 도서 수 (상위 12)</div>
+      <div class="chart-wrap" style="height:240px"><canvas id="chartPub"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">출판사별 평균 대출 권수 (2권 이상 출판사)</div>
+      <div class="chart-wrap" style="height:240px"><canvas id="chartAvg"></canvas></div>
+    </div>
+  </div>
+  
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">순위별 대출 및 변동 추이 (10위 단위 평균)</div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartTrend"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">대출 권수 분포</div>
+      <div class="chart-wrap" style="height:200px"><canvas id="chartDist"></canvas></div>
+    </div>
+  </div>
+  
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">상위 20 도서</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th style="width:36px">순위</th><th>서명</th><th>출판사</th><th style="text-align:right">대출건수</th></tr></thead>
+          <tbody id="topTable"></tbody>
+        </table>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card">
+        <div class="card-title">주요 인사이트</div>
+        <ul class="insight-list" id="insightList"></ul>
+      </div>
+      <div class="card">
+        <div class="card-title">출판사 영향력 지수 (도서수 × 평균대출)</div>
+        <div id="pubScore"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let charts = {};
+
+// 페이지가 켜지자마자 실행되는 함수
+window.addEventListener('DOMContentLoaded', () => {
+  autoLoadData();
+});
+
+async function autoLoadData() {
+  try {
+    // 💡 핵심 변화: 같은 폴더에 생성되어 있을 data.json 파일을 서버에서 직접 비동기로 긁어옵니다.
+    const response = await fetch('data.json');
+    if (!response.ok) throw new Error('data.json 파일을 찾을 수 없거나 불러오지 못했습니다.');
+    
+    const result = await response.json();
+    
+    // 로딩바를 숨기고 대시보드 화면을 켭니다.
+    document.getElementById('loading-zone').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    
+    // 파이썬이 기록해준 기준월 텍스트(period)를 상단에 노출합니다.
+    document.getElementById('meta').textContent = result.period;
+    
+    // 대시보드 차트와 표를 그리는 메인 함수 실행
+    renderDashboard(result.data);
+    
+  } catch (error) {
+    document.getElementById('loading-zone').innerHTML = 
+      `<div style="color:#ff7f5c;font-size:14px;">❌ 데이터를 불러오지 못했습니다.<br>오류 내용: ${error.message}<br><br>💡 파이썬 자동화 스크립트가 성공적으로 작동하여 'data.json' 파일이 생성되었는지 먼저 확인해 주세요.</div>`;
+  }
+}
+
+function renderDashboard(data) {
+  const n = data.length;
+  const pubs = {};
+  data.forEach(d => {
+    if (!pubs[d.pub]) pubs[d.pub] = { count: 0, total: 0 };
+    pubs[d.pub].count++; pubs[d.pub].total += d.copies;
+  });
+  const pubList = Object.entries(pubs)
+    .map(([name, v]) => ({ name, count: v.count, avg: Math.round(v.total / v.count) }))
+    .sort((a, b) => b.count - a.count);
+
+  const avgLibs = Math.round(data.reduce((s, d) => s + d.libs, 0) / n);
+  const seriesPct = Math.round(data.filter(d => /\d+/.test(d.title)).length / n * 100);
+  const collabPct = Math.round(data.filter(d => d.author.includes(',')).length / n * 100);
+
+  document.getElementById('kpi-total').textContent = n;
+  document.getElementById('kpi-pubs').textContent = Object.keys(pubs).length;
+  document.getElementById('kpi-libs').textContent = avgLibs;
+  document.getElementById('kpi-top1libs').textContent = data[0]?.libs || '—';
+  document.getElementById('kpi-series').textContent = seriesPct;
+  document.getElementById('kpi-collab').textContent = collabPct;
+
+  const tc = '#9a9aaa', gc = 'rgba(255,255,255,0.05)';
+  const baseOpts = (beginAtZero) => ({
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: tc, font: { size: 10 }, autoSkip: false, maxRotation: 38 }, grid: { color: gc } },
+      y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc }, beginAtZero }
+    }
+  });
+
+  const top12 = pubList.slice(0, 12);
+  charts.pub = new Chart(document.getElementById('chartPub'), {
+    type: 'bar',
+    data: { labels: top12.map(p => p.name), datasets: [{ data: top12.map(p => p.count), backgroundColor: '#c8f060', borderRadius: 4 }] },
+    options: baseOpts(true)
+  });
+
+  const multiPubs = pubList.filter(p => p.count >= 2).sort((a, b) => b.avg - a.avg).slice(0, 10);
+  charts.avg = new Chart(document.getElementById('chartAvg'), {
+    type: 'bar',
+    data: { labels: multiPubs.map(p => p.name), datasets: [{ data: multiPubs.map(p => p.avg), backgroundColor: '#6b8cff', borderRadius: 4 }] },
+    options: baseOpts(false)
+  });
+
+  const groups = [];
+  for (let i = 0; i < data.length; i += 10) {
+    const chunk = data.slice(i, i + 10);
+    groups.push({
+      label: (i+1) + '~' + (i + chunk.length) + '위',
+      copies: Math.round(chunk.reduce((s, d) => s + d.copies, 0) / chunk.length),
+      libs: Math.round(chunk.reduce((s, d) => s + d.libs, 0) / chunk.length),
+    });
+  }
+  charts.trend = new Chart(document.getElementById('chartTrend'), {
+    type: 'line',
+    data: {
+      labels: groups.map(g => g.label),
+      datasets: [
+        { label: '대출권수', data: groups.map(g => g.copies), borderColor: '#c8f060', backgroundColor: 'rgba(200,240,96,0.08)', tension: 0.4, pointRadius: 3, fill: true },
+        { label: '대출추이', data: groups.map(g => g.libs), borderColor: '#ff7f5c', backgroundColor: 'rgba(255,127,92,0.06)', tension: 0.4, pointRadius: 3, fill: true, borderDash: [4,3] }
+      ]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: tc, font: { size: 10 }, maxRotation: 38 }, grid: { color: gc } }, y: { ticks: { color: tc, font: { size: 10 } }, grid: { color: gc } } } }
+  });
+
+  const maxC = Math.max(...data.map(d => d.copies));
+  const step = Math.ceil(maxC / 5);
+  const buckets = [0,0,0,0,0];
+  data.forEach(d => { const i = Math.min(4, Math.floor(d.copies / step)); buckets[i]++; });
+  charts.dist = new Chart(document.getElementById('chartDist'), {
+    type: 'doughnut',
+    data: {
+      labels: buckets.map((_,i) => (i*step+1) + '~' + ((i+1)*step) + '건'),
+      datasets: [{ data: buckets, backgroundColor: ['#c8f060','#6b8cff','#ff7f5c','#59d4c4','#7a7a8c'], borderWidth: 0 }]
+    },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: tc, font: { size: 11 }, boxWidth: 10 } } }, cutout: '60%' }
+  });
+
+  const tbody = document.getElementById('topTable');
+  tbody.innerHTML = '';
+  data.slice(0, 20).forEach(d => {
+    const pct = Math.round(d.copies / data[0].copies * 100);
+    const cls = d.rank <= 3 ? 'rank-' + d.rank : '';
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td><span class="rank-badge ' + cls + '">' + d.rank + '</span></td>' +
+      '<td class="title-cell" title="' + d.title + '">' + d.title + '</td>' +
+      '<td><span class="pub-tag">' + d.pub + '</span></td>' +
+      '<td><div class="bar-inline"><span class="mono" style="font-size:12px;min-width:32px;text-align:right">' + d.copies + '</span><div class="bar-bg"><div class="bar-fill" style="width:' + pct + '%"></div></div></div></td>';
+    tbody.appendChild(tr);
+  });
+
+  const top1 = data[0], last1 = data[data.length-1], topPub = pubList[0];
+  const highAvgPub = multiPubs[0] || {name: '없음', avg: 0};
+  const gap = (top1.copies / last1.copies).toFixed(1);
+  const insights = [
+    '<span class="highlight">' + top1.title + '</span>(' + top1.pub + ')이 ' + top1.copies + '회 대출로 1위',
+    '<span class="highlight">' + topPub.name + '</span>이 ' + topPub.count + '권으로 최다 등재 출판사',
+    '평균 대출 최고: <span class="highlight">' + highAvgPub.name + '</span> (' + highAvgPub.avg + '회)',
+    '1위 vs 최하위 격차 <span class="highlight">' + gap + '배</span> (' + top1.copies + '회 vs ' + last1.copies + '회)',
+    '시리즈물 <span class="highlight">' + seriesPct + '%</span>, 공동저작 <span class="highlight">' + collabPct + '%</span>',
+  ];
+  document.getElementById('insightList').innerHTML = insights.map(t =>
+    '<li><div class="insight-dot"></div><div>' + t + '</div></li>').join('');
+
+  const scoreList = pubList.filter(p => p.count >= 2)
+    .map(p => ({ name: p.name, score: p.count * p.avg }))
+    .sort((a, b) => b.score - a.score).slice(0, 6);
+  if(scoreList.length > 0) {
+    const maxScore = scoreList[0].score;
+    document.getElementById('pubScore').innerHTML = scoreList.map(p =>
+      '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>' + p.name + '</span><span class="mono" style="color:var(--muted)">' + p.score.toLocaleString() + '</span></div><div class="bar-bg" style="height:8px"><div class="bar-fill" style="width:' + Math.round(p.score/maxScore*100) + '%;background:var(--accent2)"></div></div></div>'
+    ).join('');
+  }
+}
+</script>
+</body>
+</html>
