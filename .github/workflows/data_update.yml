@@ -1,0 +1,51 @@
+# GitHub Actions 워크플로우 이름
+name: Monthly Library Data Auto Update
+
+# 언제 이 작업을 실행할지 정하는 규칙
+on:
+  schedule:
+    # 매월 1일 새벽 2시(한국 시간)에 자동으로 실행되도록 설정
+    # UTC 기준 시간이라 한국 시간(UTC+9) 계산을 위해 17:00(전날 오후 5시)으로 지정합니다.
+    - cron: '0 17 1 * *'
+  
+  # 수동으로도 원할 때 언제든 실행할 수 있도록 버튼을 만들어주는 옵션
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # 최신 리눅스 환경 컴퓨터를 한 대 대여합니다.
+
+    steps:
+    # 1. 내 GitHub 저장소에 있는 코드 파일들을 대여한 컴퓨터로 가져옵니다.
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    # 2. 파이썬을 실행할 수 있는 환경을 설치합니다.
+    - name: Set up Python
+      uses: actions/python-latest@v2
+      with:
+        python-version: '3.10'
+
+    # 3. 파이썬 코드 실행에 필요한 외부 도구(requests)를 설치합니다.
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    # 4. 1단계에서 만든 파이썬 스크립트를 실행합니다.
+    # 이때, Settings에 등록한 내 API 비밀키(LIBRARY_API_KEY)를 환경변수로 안전하게 주입합니다.
+    - name: Run data update script
+      env:
+        LIBRARY_API_KEY: ${{ secrets.LIBRARY_API_KEY }}
+      run: |
+        python update_data.py
+
+    # 5. 파이썬이 새로 만들어낸 'data.json' 파일에 변동사항이 있다면 내 저장소에 자동으로 기록(Push)합니다.
+    - name: Commit and Push if data.json changed
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        
+        # 파일 변화가 있는지 확인 후 커밋
+        git add data.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 자동 업데이트: 최신 도서 데이터 반영 (${{ datetime }})" && git push)
