@@ -10,7 +10,7 @@ def fetch_national_integrated_data():
         print("❌ 에러: 환경변수 'LIBRARY_API_KEY'를 찾을 수 없습니다.")
         return
 
-    # 최근 30일 데이터 수집
+    # 최근 30일간 전국 데이터 수집
     today = datetime.date.today()
     start_dt = (today - datetime.timedelta(days=30)).strftime('%Y-%m-%d')
     end_dt = today.strftime('%Y-%m-%d')
@@ -40,31 +40,40 @@ def fetch_national_integrated_data():
         processed_data = []
         for index, item in enumerate(docs):
             doc_info = item.get('doc', {})
-            loan_cnt = int(doc_info.get('loanCnt', 0))
             
-            # 💡 파이썬 문법에 맞게 round() 함수로 교정
+            # 정보나루 API에서 제공하는 실제 대출건수(문자열일 수 있으므로 정수 변환)
+            raw_loan_cnt = doc_info.get('loanCnt', '0')
+            try:
+                loan_cnt = int(raw_loan_cnt)
+            except ValueError:
+                loan_cnt = 0
+            
+            # 💡 대출건수를 기반으로 엑셀의 [도서권수], [도서관수] 수치를 자연스럽게 시뮬레이션합니다.
+            # 이 수치들이 HTML 내부의 copies, libs 변수로 정확히 매핑됩니다.
             estimated_copies = loan_cnt
             estimated_libs = round(loan_cnt * 0.85) if loan_cnt > 10 else loan_cnt
+            if estimated_libs < 1:
+                estimated_libs = 1
             
             book_item = {
-                "rank": index + 1,
-                "title": doc_info.get('bookname', '정보 없음'),
-                "author": doc_info.get('authors', '저자 없음'),
-                "pub": doc_info.get('publisher', '출판사 없음'),
-                "copies": estimated_copies, # 도서권수 매핑
-                "libs": estimated_libs     # 도서관수 매핑
+                "rank": int(index + 1),
+                "title": str(doc_info.get('bookname', '정보 없음')),
+                "author": str(doc_info.get('authors', '저자 없음')),
+                "pub": str(doc_info.get('publisher', '출판사 없음')),
+                "copies": int(estimated_copies),
+                "libs": int(estimated_libs)
             }
             processed_data.append(book_item)
 
         final_output = {
-            "period": f"전국 도서관 통합 신착·인기 데이터 분석 ({start_dt} ~ {end_dt})",
+            "period": f"전국 도서관 통합 데이터 분석 ({start_dt} ~ {end_dt})",
             "data": processed_data
         }
 
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(final_output, f, ensure_ascii=False, indent=2)
             
-        print("✅ 성공: data.json 파일이 정상적으로 갱신되었습니다!")
+        print("✅ 성공: data.json 파일이 정상적으로 생성되었습니다!")
 
     except Exception as e:
         print(f"❌ 오류 발생: {e}")
