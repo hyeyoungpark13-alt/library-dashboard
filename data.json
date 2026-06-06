@@ -1,1205 +1,1205 @@
 {
-  "period": "전국 도서관 통합 데이터 분석 (2026-05-07 ~ 2026-06-06)",
+  "period": "전국 도서관 통합 신착·인기 데이터 분석 (2026-05-07 ~ 2026-06-06)",
   "data": [
     {
       "rank": 1,
       "title": "소년이 온다 :한강 장편소설 ",
       "author": "지은이: 한강",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 570,
+      "libs": 502
     },
     {
       "rank": 2,
       "title": "안녕이라 그랬어 :김애란 소설 ",
       "author": "지은이: 김애란",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 567,
+      "libs": 499
     },
     {
       "rank": 3,
       "title": "혼모노 :성해나 소설집 ",
       "author": "지은이: 성해나",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 564,
+      "libs": 496
     },
     {
       "rank": 4,
       "title": "모순 :양귀자 장편소설 ",
       "author": "지은이: 양귀자",
       "pub": "쓰다",
-      "copies": 0,
-      "libs": 1
+      "copies": 561,
+      "libs": 494
     },
     {
       "rank": 5,
       "title": "절창 :구병모 장편소설 ",
       "author": "지은이: 구병모",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 558,
+      "libs": 491
     },
     {
       "rank": 6,
       "title": "작별하지 않는다 :한강 장편소설 ",
       "author": "지은이: 한강",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 555,
+      "libs": 488
     },
     {
       "rank": 7,
       "title": "불편한 편의점 :김호연 장편소설 ",
       "author": "지은이: 김호연",
       "pub": "나무옆의자",
-      "copies": 0,
-      "libs": 1
+      "copies": 552,
+      "libs": 486
     },
     {
       "rank": 8,
       "title": "이중 하나는 거짓말 :김애란 장편소설 ",
       "author": "지은이: 김애란",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 549,
+      "libs": 483
     },
     {
       "rank": 9,
       "title": "괴테는 모든 것을 말했다 ",
       "author": "스즈키 유이 지음 ;이지수 옮김",
       "pub": "콘텐츠그룹 포레스트",
-      "copies": 0,
-      "libs": 1
+      "copies": 546,
+      "libs": 480
     },
     {
       "rank": 10,
       "title": "홍학의 자리 :정해연 장편소설 ",
       "author": "지은이: 정해연",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 543,
+      "libs": 478
     },
     {
       "rank": 11,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 540,
+      "libs": 475
     },
     {
       "rank": 12,
       "title": "자몽살구클럽",
       "author": "한로로 (HANRORO) (지은이)",
       "pub": "어센틱",
-      "copies": 0,
-      "libs": 1
+      "copies": 537,
+      "libs": 473
     },
     {
       "rank": 13,
       "title": "나의 완벽한 장례식 :조현선 장편소설 ",
       "author": "지은이: 조현선",
       "pub": "책읽어주는남자",
-      "copies": 0,
-      "libs": 1
+      "copies": 534,
+      "libs": 470
     },
     {
       "rank": 14,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 531,
+      "libs": 467
     },
     {
       "rank": 15,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 528,
+      "libs": 465
     },
     {
       "rank": 16,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 525,
+      "libs": 462
     },
     {
       "rank": 17,
       "title": "프로젝트 헤일메리 ",
       "author": "앤디 위어 지음 ;강동혁 옮김",
       "pub": "RHK(알에이치코리아)",
-      "copies": 0,
-      "libs": 1
+      "copies": 522,
+      "libs": 459
     },
     {
       "rank": 18,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 519,
+      "libs": 457
     },
     {
       "rank": 19,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 516,
+      "libs": 454
     },
     {
       "rank": 20,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 513,
+      "libs": 451
     },
     {
       "rank": 21,
       "title": "바깥은 여름 :김애란 소설 ",
       "author": "지은이: 김애란",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 510,
+      "libs": 449
     },
     {
       "rank": 22,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 507,
+      "libs": 446
     },
     {
       "rank": 23,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 504,
+      "libs": 444
     },
     {
       "rank": 24,
       "title": "할매 =황석영 장편소설 /Grandma ",
       "author": "지은이: 황석영",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 501,
+      "libs": 441
     },
     {
       "rank": 25,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 498,
+      "libs": 438
     },
     {
       "rank": 26,
       "title": "급류 :정대건 장편소설 ",
       "author": "지은이: 정대건",
       "pub": "민음사",
-      "copies": 0,
-      "libs": 1
+      "copies": 495,
+      "libs": 436
     },
     {
       "rank": 27,
       "title": "박곰희 연금 부자 수업 :4개의 통장으로 월 300만원 만들기 ",
       "author": "박곰희 지음",
       "pub": "인플루엔셜",
-      "copies": 0,
-      "libs": 1
+      "copies": 492,
+      "libs": 433
     },
     {
       "rank": 28,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 489,
+      "libs": 430
     },
     {
       "rank": 29,
       "title": "어른의 행복은 조용하다 ",
       "author": "글: 태수",
       "pub": "페이지2북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 486,
+      "libs": 428
     },
     {
       "rank": 30,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 483,
+      "libs": 425
     },
     {
       "rank": 31,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 480,
+      "libs": 422
     },
     {
       "rank": 32,
       "title": "채식주의자 :한강 장편소설 ",
       "author": "지은이: 한강",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 477,
+      "libs": 420
     },
     {
       "rank": 33,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 474,
+      "libs": 417
     },
     {
       "rank": 34,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 471,
+      "libs": 414
     },
     {
       "rank": 35,
       "title": "단 한 번의 삶 ",
       "author": "지은이: 김영하",
       "pub": "복복서가",
-      "copies": 0,
-      "libs": 1
+      "copies": 468,
+      "libs": 412
     },
     {
       "rank": 36,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 465,
+      "libs": 409
     },
     {
       "rank": 37,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 462,
+      "libs": 407
     },
     {
       "rank": 38,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 459,
+      "libs": 404
     },
     {
       "rank": 39,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 456,
+      "libs": 401
     },
     {
       "rank": 40,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 453,
+      "libs": 399
     },
     {
       "rank": 41,
       "title": "긴긴밤 ",
       "author": "루리 글·그림",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 450,
+      "libs": 396
     },
     {
       "rank": 42,
       "title": "흔한남매 21",
       "author": "흔한남매 (지은이), 백난도 (글), 유난희 (그림), 흔한컴퍼니 (감수)",
       "pub": "미래엔아이세움",
-      "copies": 0,
-      "libs": 1
+      "copies": 447,
+      "libs": 393
     },
     {
       "rank": 43,
       "title": "흔한남매",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 444,
+      "libs": 391
     },
     {
       "rank": 44,
       "title": "불편한 편의점 :김호연 장편소설",
       "author": "지은이: 김호연",
       "pub": "나무옆의자",
-      "copies": 0,
-      "libs": 1
+      "copies": 441,
+      "libs": 388
     },
     {
       "rank": 45,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 438,
+      "libs": 385
     },
     {
       "rank": 46,
       "title": "가공범 ",
       "author": "지은이: 히가시노 게이고 ;옮긴이: 김선영",
       "pub": "교보문고",
-      "copies": 0,
-      "libs": 1
+      "copies": 435,
+      "libs": 383
     },
     {
       "rank": 47,
       "title": "순례 주택 :유은실 소설 ",
       "author": "지은이: 유은실",
       "pub": "비룡소",
-      "copies": 0,
-      "libs": 1
+      "copies": 432,
+      "libs": 380
     },
     {
       "rank": 48,
       "title": "첫 여름, 완주 :김금희 장편소설 ",
       "author": "저자 : 김금희",
       "pub": "무제",
-      "copies": 0,
-      "libs": 1
+      "copies": 429,
+      "libs": 378
     },
     {
       "rank": 49,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 426,
+      "libs": 375
     },
     {
       "rank": 50,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 423,
+      "libs": 372
     },
     {
       "rank": 51,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 420,
+      "libs": 370
     },
     {
       "rank": 52,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 417,
+      "libs": 367
     },
     {
       "rank": 53,
       "title": "세종의 나라 1 (양장)",
       "author": "김진명 (지은이)",
       "pub": "이타북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 414,
+      "libs": 364
     },
     {
       "rank": 54,
       "title": "위버멘쉬 :누구의 시선도 아닌, 내 의지대로 살겠다는 선언 ",
       "author": "프리디리히 니체 지음 ;어나니머스 옮김",
       "pub": "Rise(떠오름코퍼레이션)",
-      "copies": 0,
-      "libs": 1
+      "copies": 411,
+      "libs": 362
     },
     {
       "rank": 55,
       "title": "엄마가 유령이 되었어! ",
       "author": "노부미 글·그림 ;이기웅 옮김",
       "pub": "길벗어린이",
-      "copies": 0,
-      "libs": 1
+      "copies": 408,
+      "libs": 359
     },
     {
       "rank": 56,
       "title": "쥬디 할머니 :박완서 소설 ",
       "author": "지은이: 박완서",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 405,
+      "libs": 356
     },
     {
       "rank": 57,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 402,
+      "libs": 354
     },
     {
       "rank": 58,
       "title": "돈의 심리학 :당신은 왜 부자가 되지 못했는가 ",
       "author": "모건 하우절 지음 ;이지연 옮김",
       "pub": "인플루엔셜",
-      "copies": 0,
-      "libs": 1
+      "copies": 399,
+      "libs": 351
     },
     {
       "rank": 59,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 396,
+      "libs": 348
     },
     {
       "rank": 60,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 393,
+      "libs": 346
     },
     {
       "rank": 61,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 390,
+      "libs": 343
     },
     {
       "rank": 62,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 387,
+      "libs": 341
     },
     {
       "rank": 63,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 384,
+      "libs": 338
     },
     {
       "rank": 64,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 381,
+      "libs": 335
     },
     {
       "rank": 65,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 378,
+      "libs": 333
     },
     {
       "rank": 66,
       "title": "돈의 방정식 :돈을 지위와 성공의 기준, 그 이상으로 다루기 위한 21가지 이야기 ",
       "author": "지은이: 모건 하우절 ;옮긴이: 박영준",
       "pub": "서삼독",
-      "copies": 0,
-      "libs": 1
+      "copies": 375,
+      "libs": 330
     },
     {
       "rank": 67,
       "title": "최소한의 삼국지 :최태성의 삼국지 고전 특강 ",
       "author": "최태성 지음",
       "pub": "프런트페이지",
-      "copies": 0,
-      "libs": 1
+      "copies": 372,
+      "libs": 327
     },
     {
       "rank": 68,
       "title": "다판다 편의점",
       "author": "강효미 글 ;밤코 그림",
       "pub": "다산북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 369,
+      "libs": 325
     },
     {
       "rank": 69,
       "title": "돈의 속성 :최상위 부자가 말하는 돈에 대한 모든 것 ",
       "author": "지은이: 김승호",
       "pub": "Snowfox(스노우폭스북스)",
-      "copies": 0,
-      "libs": 1
+      "copies": 366,
+      "libs": 322
     },
     {
       "rank": 70,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 363,
+      "libs": 319
     },
     {
       "rank": 71,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 360,
+      "libs": 317
     },
     {
       "rank": 72,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 357,
+      "libs": 314
     },
     {
       "rank": 73,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 354,
+      "libs": 312
     },
     {
       "rank": 74,
       "title": "천 개의 파랑 :천선란 장편소설 ",
       "author": "지은이: 천선란",
       "pub": "허블",
-      "copies": 0,
-      "libs": 1
+      "copies": 351,
+      "libs": 309
     },
     {
       "rank": 75,
       "title": "흔한남매 이무기 :이해하면 무서운 이야기",
       "author": "원작: 흔한남매 ;그림: 도니패밀리",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 348,
+      "libs": 306
     },
     {
       "rank": 76,
       "title": "에그박사 :Egg&bugs",
       "author": "원작: 에그박사 ;그림: 홍종현",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 345,
+      "libs": 304
     },
     {
       "rank": 77,
       "title": "똥볶이 할멈 8 - 우리가 만드는 행운",
       "author": "강효미 (지은이), 김무연 (그림)",
       "pub": "슈크림북",
-      "copies": 0,
-      "libs": 1
+      "copies": 342,
+      "libs": 301
     },
     {
       "rank": 78,
       "title": "흔한남매 이무기 :이해하면 무서운 이야기",
       "author": "원작: 흔한남매 ;그림: 도니패밀리",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 339,
+      "libs": 298
     },
     {
       "rank": 79,
       "title": "진보를 위한 주식투자 =광수네 복덕방, 모두의 투자 이야기 /Stock investing for progress ",
       "author": "이광수 지음",
       "pub": "21세기북스(북이십일 21세기북스)",
-      "copies": 0,
-      "libs": 1
+      "copies": 336,
+      "libs": 296
     },
     {
       "rank": 80,
       "title": "똥볶이 할멈 :K-히어로 판타지",
       "author": "글: 강효미 ;그림: 김무연",
       "pub": "따끈따끈책방",
-      "copies": 0,
-      "libs": 1
+      "copies": 333,
+      "libs": 293
     },
     {
       "rank": 81,
       "title": "수박 수영장 :안녕달 그림책 ",
       "author": "지은이: 안녕달",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 330,
+      "libs": 290
     },
     {
       "rank": 82,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 327,
+      "libs": 288
     },
     {
       "rank": 83,
       "title": "다판다 편의점",
       "author": "강효미 글 ;밤코 그림",
       "pub": "다산북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 324,
+      "libs": 285
     },
     {
       "rank": 84,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 321,
+      "libs": 282
     },
     {
       "rank": 85,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 318,
+      "libs": 280
     },
     {
       "rank": 86,
       "title": "아몬드 :손원평 장편소설 ",
       "author": "지은이: 손원평",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 315,
+      "libs": 277
     },
     {
       "rank": 87,
       "title": "죽이고 싶은 아이 :이꽃님 장편소설 ",
       "author": "지은이: 이꽃님",
       "pub": "우리학교",
-      "copies": 0,
-      "libs": 1
+      "copies": 312,
+      "libs": 275
     },
     {
       "rank": 88,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 309,
+      "libs": 272
     },
     {
       "rank": 89,
       "title": "다판다 편의점",
       "author": "강효미 글 ;밤코 그림",
       "pub": "다산북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 306,
+      "libs": 269
     },
     {
       "rank": 90,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 303,
+      "libs": 267
     },
     {
       "rank": 91,
       "title": "종의 기원 =정유정 장편소설 /The origin of species ",
       "author": "지은이: 정유정",
       "pub": "은행나무",
-      "copies": 0,
-      "libs": 1
+      "copies": 300,
+      "libs": 264
     },
     {
       "rank": 92,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 297,
+      "libs": 261
     },
     {
       "rank": 93,
       "title": "너구리 라면 가게 ",
       "author": "글: 최설희 ;그림: 김덕영",
       "pub": "다산북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 294,
+      "libs": 259
     },
     {
       "rank": 94,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 291,
+      "libs": 256
     },
     {
       "rank": 95,
       "title": "비스킷 ",
       "author": "글: 김선미",
       "pub": "위즈덤하우스",
-      "copies": 0,
-      "libs": 1
+      "copies": 288,
+      "libs": 253
     },
     {
       "rank": 96,
       "title": "흔한남매 이무기 :이해하면 무서운 이야기",
       "author": "원작: 흔한남매 ;그림: 도니패밀리",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 285,
+      "libs": 251
     },
     {
       "rank": 97,
       "title": "이처럼 사소한 것들 :클레어 키건 소설 ",
       "author": "지은이: 클레어 키건 ;옮긴이: 홍한별",
       "pub": "다산북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 282,
+      "libs": 248
     },
     {
       "rank": 98,
       "title": "체리새우 :황영미 장편소설 ",
       "author": "지은이: 황영미",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 279,
+      "libs": 246
     },
     {
       "rank": 99,
       "title": "세종의 나라 2 (양장)",
       "author": "김진명 (지은이)",
       "pub": "이타북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 276,
+      "libs": 243
     },
     {
       "rank": 100,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 273,
+      "libs": 240
     },
     {
       "rank": 101,
       "title": "대온실 수리 보고서 :김금희 장편소설 ",
       "author": "지은이: 김금희",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 270,
+      "libs": 238
     },
     {
       "rank": 102,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 267,
+      "libs": 235
     },
     {
       "rank": 103,
       "title": "다정한 사람이 이긴다 ",
       "author": "이해인 지음",
       "pub": "필름",
-      "copies": 0,
-      "libs": 1
+      "copies": 264,
+      "libs": 232
     },
     {
       "rank": 104,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 261,
+      "libs": 230
     },
     {
       "rank": 105,
       "title": "노 피플 존 :정이현 소설 ",
       "author": "지은이: 정이현",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 258,
+      "libs": 227
     },
     {
       "rank": 106,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 255,
+      "libs": 224
     },
     {
       "rank": 107,
       "title": "에그박사 :Egg&bugs",
       "author": "원작: 에그박사 ;그림: 홍종현",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 252,
+      "libs": 222
     },
     {
       "rank": 108,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 249,
+      "libs": 219
     },
     {
       "rank": 109,
       "title": "똥볶이 할멈 :K-히어로 판타지",
       "author": "글: 강효미 ;그림: 김무연",
       "pub": "따끈따끈책방",
-      "copies": 0,
-      "libs": 1
+      "copies": 246,
+      "libs": 216
     },
     {
       "rank": 110,
       "title": "부처님 말씀대로 살아보니 :인생이 가벼워지는 15가지 불교 수업 ",
       "author": "토니 페르난도 지음 ;강정선 옮김",
       "pub": "Wilma(윌마)",
-      "copies": 0,
-      "libs": 1
+      "copies": 243,
+      "libs": 214
     },
     {
       "rank": 111,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 240,
+      "libs": 211
     },
     {
       "rank": 112,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 237,
+      "libs": 209
     },
     {
       "rank": 113,
       "title": "흔한남매 이상한 나라의 고전 읽기",
       "author": "최재훈 글 ;정주연 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 234,
+      "libs": 206
     },
     {
       "rank": 114,
       "title": "에그박사 :Egg&bugs",
       "author": "원작: 에그박사 ;그림: 홍종현",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 231,
+      "libs": 203
     },
     {
       "rank": 115,
       "title": "죽이고 싶은 아이 :이꽃님 장편소설",
       "author": "지은이: 이꽃님",
       "pub": "우리학교",
-      "copies": 0,
-      "libs": 1
+      "copies": 228,
+      "libs": 201
     },
     {
       "rank": 116,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 225,
+      "libs": 198
     },
     {
       "rank": 117,
       "title": "똥볶이 할멈 :K-히어로 판타지",
       "author": "글: 강효미 ;그림: 김무연",
       "pub": "따끈따끈책방",
-      "copies": 0,
-      "libs": 1
+      "copies": 222,
+      "libs": 195
     },
     {
       "rank": 118,
       "title": "흔한남매의 흔한 호기심 :일상에서 만나는 과학 상식",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 219,
+      "libs": 193
     },
     {
       "rank": 119,
       "title": "밝은 밤 :최은영 장편소설 ",
       "author": "지은이: 최은영",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 216,
+      "libs": 190
     },
     {
       "rank": 120,
       "title": "고양이 해결사 깜냥",
       "author": "홍민정 동화 ;김재희 그림",
       "pub": "창비",
-      "copies": 0,
-      "libs": 1
+      "copies": 213,
+      "libs": 187
     },
     {
       "rank": 121,
       "title": "슈뻘맨의 숨은 과학 찾기 :엉뚱 도전 속에 숨은 과학 상식",
       "author": "슈뻘맨 원작 ;류수형 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 210,
+      "libs": 185
     },
     {
       "rank": 122,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 207,
+      "libs": 182
     },
     {
       "rank": 123,
       "title": "(흔한남매) 수수께끼 어드벤처 :수수께끼로 배우는 교과 지식",
       "author": "원작: 흔한남매 ;그림: 도니패밀리",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 204,
+      "libs": 180
     },
     {
       "rank": 124,
       "title": "에그박사 :Egg&bugs",
       "author": "원작: 에그박사 ;그림: 홍종현",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 201,
+      "libs": 177
     },
     {
       "rank": 125,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 198,
+      "libs": 174
     },
     {
       "rank": 126,
       "title": "여름은 고작 계절 :김서해 장편소설 ",
       "author": "지은이: 김서해",
       "pub": "위즈덤하우스",
-      "copies": 0,
-      "libs": 1
+      "copies": 195,
+      "libs": 172
     },
     {
       "rank": 127,
       "title": "말뚝들 :김홍 장편소설 ",
       "author": "지은이: 김홍",
       "pub": "한겨레엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 192,
+      "libs": 169
     },
     {
       "rank": 128,
       "title": "슈뻘맨의 숨은 과학 찾기 :엉뚱 도전 속에 숨은 과학 상식",
       "author": "슈뻘맨 원작 ;류수형 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 189,
+      "libs": 166
     },
     {
       "rank": 129,
       "title": "끔찍한 샐러드 - 오싹오싹 친구들!",
       "author": "에런 레이놀즈 (지은이), 피터 브라운 (그림), 홍연미 (옮긴이)",
       "pub": "토토북",
-      "copies": 0,
-      "libs": 1
+      "copies": 186,
+      "libs": 164
     },
     {
       "rank": 130,
       "title": "나는 소망한다 내게 금지된 것을 :양귀자 장편소설 ",
       "author": "지은이: 양귀자",
       "pub": "쓰다",
-      "copies": 0,
-      "libs": 1
+      "copies": 183,
+      "libs": 161
     },
     {
       "rank": 131,
       "title": "슈뻘맨의 숨은 과학 찾기 :엉뚱 도전 속에 숨은 과학 상식",
       "author": "슈뻘맨 원작 ;류수형 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 180,
+      "libs": 158
     },
     {
       "rank": 132,
       "title": "슈뻘맨의 숨은 과학 찾기 :엉뚱 도전 속에 숨은 과학 상식",
       "author": "슈뻘맨 원작 ;류수형 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 177,
+      "libs": 156
     },
     {
       "rank": 133,
       "title": "(흔한남매) 수수께끼 어드벤처 :수수께끼로 배우는 교과 지식",
       "author": "원작: 흔한남매 ;그림: 도니패밀리",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 174,
+      "libs": 153
     },
     {
       "rank": 134,
       "title": "인생을 위한 최소한의 생각",
       "author": "신영준, 고영성 (지은이)",
       "pub": "상상스퀘어",
-      "copies": 0,
-      "libs": 1
+      "copies": 171,
+      "libs": 150
     },
     {
       "rank": 135,
       "title": "슈뻘맨의 숨은 과학 찾기 :엉뚱 도전 속에 숨은 과학 상식",
       "author": "슈뻘맨 원작 ;류수형 그림",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 168,
+      "libs": 148
     },
     {
       "rank": 136,
       "title": "세계를 건너 너에게 갈게 :이꽃님 장편소설 ",
       "author": "글쓴이: 이꽃님",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 165,
+      "libs": 145
     },
     {
       "rank": 137,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 162,
+      "libs": 143
     },
     {
       "rank": 138,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 159,
+      "libs": 140
     },
     {
       "rank": 139,
       "title": "다크 심리학 =Dark psychology ",
       "author": "다크 사이드 프로젝트 지음",
       "pub": "어센딩",
-      "copies": 0,
-      "libs": 1
+      "copies": 156,
+      "libs": 137
     },
     {
       "rank": 140,
       "title": "똥볶이 할멈 :K-히어로 판타지",
       "author": "글: 강효미 ;그림: 김무연",
       "pub": "따끈따끈책방",
-      "copies": 0,
-      "libs": 1
+      "copies": 153,
+      "libs": 135
     },
     {
       "rank": 141,
       "title": "장미와 나이프 ",
       "author": "지은이: 히가시노 게이고 ;옮긴이: 김윤경",
       "pub": "오팬하우스",
-      "copies": 0,
-      "libs": 1
+      "copies": 150,
+      "libs": 132
     },
     {
       "rank": 142,
       "title": "완벽한 원시인 =10만 년을 되돌려 되찾는 뇌 설계도 /Perfect caveman ",
       "author": "자청 지음",
       "pub": "라이브해킹",
-      "copies": 0,
-      "libs": 1
+      "copies": 147,
+      "libs": 129
     },
     {
       "rank": 143,
       "title": "달러구트 꿈 백화점 :주문하신 꿈은 매진입니다 ",
       "author": "지은이: 이미예",
       "pub": "팩토리나인",
-      "copies": 0,
-      "libs": 1
+      "copies": 144,
+      "libs": 127
     },
     {
       "rank": 144,
       "title": "렛뎀 이론 :인생이 '나'로 충만해지는 내버려두기의 기술 ",
       "author": "멜 로빈스,윤효원 옮김",
       "pub": "비즈니스북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 141,
+      "libs": 124
     },
     {
       "rank": 145,
       "title": "흔한남매 과학 탐험대",
       "author": "원작: 흔한남매 ;임혜영",
       "pub": "김영사",
-      "copies": 0,
-      "libs": 1
+      "copies": 138,
+      "libs": 121
     },
     {
       "rank": 146,
       "title": "아주 작은 습관의 힘 :최고의 변화는 어떻게 만들어지는가 ",
       "author": "제임스 클리어 지음 ;이한이 옮김",
       "pub": "비즈니스북스",
-      "copies": 0,
-      "libs": 1
+      "copies": 135,
+      "libs": 119
     },
     {
       "rank": 147,
       "title": "지구 끝의 온실 :김초엽 장편소설 ",
       "author": "지은이: 김초엽",
       "pub": "Giant Books(자이언트북스)",
-      "copies": 0,
-      "libs": 1
+      "copies": 132,
+      "libs": 116
     },
     {
       "rank": 148,
       "title": "흔한남매 오해요 :귀염 뽀짝 부캐들과 펼치는 초단편 콩트 만화 ",
       "author": "원작: 흔한남매 ;그림: 유난희",
       "pub": "미래엔",
-      "copies": 0,
-      "libs": 1
+      "copies": 129,
+      "libs": 114
     },
     {
       "rank": 149,
       "title": "5번 레인 ",
       "author": "은소홀 글 ;노인경 그림",
       "pub": "문학동네",
-      "copies": 0,
-      "libs": 1
+      "copies": 126,
+      "libs": 111
     },
     {
       "rank": 150,
       "title": "편안함의 습격 :편리와 효율, 멸균과 풍족의 시대가 우리에게서 앗아간 것들에 관하여 ",
       "author": "지은이: 마이클 이스터 ;옮긴이: 김원진",
       "pub": "수오서재",
-      "copies": 0,
-      "libs": 1
+      "copies": 123,
+      "libs": 108
     }
   ]
 }
