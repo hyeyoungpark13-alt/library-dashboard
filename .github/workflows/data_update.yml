@@ -11,6 +11,10 @@ on:
   # 수동으로도 원할 때 언제든 실행할 수 있도록 버튼을 만들어주는 옵션
   workflow_dispatch:
 
+# 💡 핵심 추가: GitHub Actions 봇이 내 저장소에 파일을 쓸 수 있도록 권한을 부여합니다.
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest # 최신 리눅스 환경 컴퓨터를 한 대 대여합니다.
@@ -46,6 +50,6 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         
-        # 파일 변화가 있는지 확인 후 커밋 (에러 유발하던 ${{ datetime }}을 리눅스 자체 날짜 명령어로 수정)
+        # 파일 변화가 있는지 확인 후 커밋 (리눅스 자체 날짜 명령어로 안전하게 처리)
         git add data.json
         git diff --quiet && git diff --staged --quiet || (git commit -m "🔄 자동 업데이트: 최신 도서 데이터 반영 ($(date +'%Y-%m-%d %H:%M:%S'))" && git push)
